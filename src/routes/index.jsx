@@ -9,7 +9,7 @@ function IndexPage() {
   const { data: countries, isLoading, isError } = useQuery({
     queryKey: ['countries'],
     queryFn: async () => {
-      const res = await fetch('https://restcountries.com/v5/all?fields=name,flags,population,region,capital,cca3,borders', {
+      const res = await fetch('https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital,cca3,borders', {
         headers: {
           'Authorization': 'Bearer BURAYA_API_KEY_YAZ'
         }
