@@ -12,7 +12,7 @@ function CountryPage() {
   const { data: country, isLoading, isError } = useQuery({
     queryKey: ['country', cca3],
     queryFn: async () => {
-      const res = await fetch(`https://restcountries.com/v3.1/alpha/${cca3}?fields=name,flags,population,region,capital,cca3,borders,languages,currencies,area`)
+      const res = await fetch(`https://restcountries.com/v5/alpha/${cca3}?fields=name,flags,population,region,capital,cca3,borders,languages,currencies,area`)
       if (!res.ok) throw new Error('Şəbəkə xətası')
       const data = await res.json()
       // API bəzən massiv qaytarır, bəzən obyekt
@@ -24,7 +24,7 @@ function CountryPage() {
   const { data: allCountries } = useQuery({
     queryKey: ['countries'],
     queryFn: async () => {
-      const res = await fetch('https://restcountries.com/v3.1/all?fields=name,cca3')
+      const res = await fetch('https://restcountries.com/v5/all?fields=name,cca3')
       return res.json()
     },
     staleTime: 1000 * 60 * 60, // Məlumatları 1 saatlıq keşləyirik ki, hər dəfə serverə getməsin
